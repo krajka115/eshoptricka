@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uprav objednávku</title>
+</head>
+<body>
+<h1>Uprav objednávku</h1>
+<form method="POST" th:action="@{/uloz-upravenu-objednavku}" th:object="${objednavkaObjektPodlaIdThymeleaf}"> <!--aby nepodčiarkovalo th červeným tak upravíme druhý riadok. objednavkaObjektThymeleaf je to isté ako v Controlleri pri pridaj objednávku-->
+ <!--<label>origi sa dáva text do label-->
+    <input th:field="*{id}" type="hidden" />  <!--toto je navyše riadok oproti pridaj-novu-obj-->
+    Popis <input th:field="*{popis}" type="text" /><br /> <!--br znamená že nový atribut bude v novom riadku-->
+    Farba <!--<input th:field="*{farba}" type="text" /><br />-->
+    <select th:field="*{farba}">
+        <option value="Červená">Červená</option>
+        <option value="Modrá">Modrá</option>
+        <option value="Zelená">Zelená</option>
+        <option value="Biela">Biela</option>
+        <option value="Fialová">Fialová</option>
+        <option value="Čierna">Čierna</option>
+        <option value="Hnedá">Hnedá</option>
+        <option value="Ružová">Ružová</option>
+        <option value="Žltá">Žltá</option>
+        <option value="Oranžová">Oranžová</option>
+    </select>
+    Značka <input th:field="*{znacka}" type="text" /><br />
+    Veľkosť
+    <select th:field="*{velkost}">
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+    </select><br />
+
+    Počet <input th:field="*{pocet}" type="number" /><br />
+    Dátum objednávky <input th:field="*{datumObjednavky}" type="date" /><br />
+    Meno zákazníka <input th:field="*{menoZakaznika}" type="text" /><br />
+  <button type="submit">Ulož objednávku</button>
+</form>
+</body>
+</html>
