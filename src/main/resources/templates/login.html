@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Login form</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body class="container">
+
+<div th:if="${param.error}"> <!--ked je th je to thymeleaf-->
+  Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+  You have been logged out.
+  <script>
+    // Funkcia na presmerovanie po 5 sekundách
+    function presmerujPo5Sekundach() {
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 3000); // 3000 milisekúnd (3 sekúnd)
+    }
+
+    // Zavoláme funkciu presmerujPo5Sekundach() hneď po načítaní stránky
+    window.onload = presmerujPo5Sekundach;
+  </script>
+</div>
+<form th:action="@{/login}" method="post">
+  <div><label> User Name : <input type="text" name="username" class="form-control col-12"/> </label></div>
+  <div><label> Password: <input type="password" name="password" class="form-control col-12"/> </label></div>
+  <div><input type="submit" value="Sign In" class="btn btn-info col-2" /></div>
+</form>
+<td><br></td>
+<td><br></td>
+<a href="/" alt="Odkaz na hlavnú stránku">Späť na hlavnú stránku</a>
+</body>
+</html>

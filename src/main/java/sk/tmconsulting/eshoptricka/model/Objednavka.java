@@ -1,10 +1,12 @@
 package sk.tmconsulting.eshoptricka.model;
 
-import jakarta.persistence.*;
+/*import jakarta.persistence.*;*/ // import pre novšiu verziu, museli sme zmeniť na staršiu, kedy to robil lektor aby nám to šlo
 
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity // zadáme @Entity a urobí automaticky import
+@Table(name="objednavka")
 public class Objednavka { //dalo Objednávka červenou, a vygenerovalo cestu cez ID, aby chyba zmizla
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +20,10 @@ public class Objednavka { //dalo Objednávka červenou, a vygenerovalo cestu cez
     private int pocet;
     private Date datumObjednavky;
     private String menoZakaznika;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="pouzivatel_id")
+    private Pouzivatel pouzivatel;
 
     /*    farby, značku, veľkosť, (príp. ďalšie atribúty) a objednané množstvo (počet kusov), dátum objednávky + meno zákazníka.*/
 
@@ -83,5 +89,13 @@ public class Objednavka { //dalo Objednávka červenou, a vygenerovalo cestu cez
 
     public void setVelkost(Velkost velkost) {
         this.velkost = velkost;
+    }
+
+    public Pouzivatel getPouzivatel() {
+        return pouzivatel;
+    }
+
+    public void setPouzivatel(Pouzivatel pouzivatel) {
+        this.pouzivatel = pouzivatel;
     }
 }
