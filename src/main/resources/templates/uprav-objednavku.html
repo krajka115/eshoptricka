@@ -13,6 +13,7 @@
 <form method="POST" th:action="@{/uloz-upravenu-objednavku}" th:object="${objednavkaObjektPodlaIdThymeleaf}"> <!--aby nepodčiarkovalo th červeným tak upravíme druhý riadok. objednavkaObjektThymeleaf je to isté ako v Controlleri pri pridaj objednávku-->
  <!--<label>origi sa dáva text do label-->
     <input th:field="*{id}" type="hidden" />  <!--toto je navyše riadok oproti pridaj-novu-obj-->
+    <input th:field="*{pouzivatel.id}" type="hidden" />
     Popis <input th:field="*{popis}" type="text" /><br /> <!--br znamená že nový atribut bude v novom riadku-->
     Farba <!--<input th:field="*{farba}" type="text" /><br />-->
     <select th:field="*{farba}">
