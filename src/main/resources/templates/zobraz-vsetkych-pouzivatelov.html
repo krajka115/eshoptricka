@@ -15,24 +15,35 @@
         <th>Meno</th>
         <th>Priezvisko</th>
         <th>Používateľské meno</th>
+        <th>Akcie</th>
 
 
 <!--tablehead je th-->
     </tr>
     </thead>
-    <tbody>
+    <tbody >
+
     <tr th:each="konkretnyPouzivatel:${vsetciPouzivateliaThymeleaf}">
         <td th:text="${konkretnyPouzivatel.meno}"></td>
         <td th:text="${konkretnyPouzivatel.priezvisko}"></td>
         <td th:text="${konkretnyPouzivatel.username}"></td>
+            <td>
+            <a th:href="@{/uprav-pouzivatela/{id}(id=${konkretnyPouzivatel.id})}">Uprav používateľa</a>
+            <a th:href="@{/odstran-pouzivatela/{id}(id=${konkretnyPouzivatel.id})}">Odstráň používateľa</a>
+        </td>
 
         </tr>
+
     </tbody>
+
 </table>
+<br />
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" class="btn btn-secondary " value="Sign Out"/>
 </form>
 <td><br></td>
-<a href="/" alt="Odkaz na hlavnú stránku">Späť na hlavnú stránku</a>
+<div class="text-center">
+    <a href="/" alt="Odkaz na hlavnú stránku" class="btn btn-danger">Späť na hlavnú stránku</a>
+</div>
 </body>
 </html>

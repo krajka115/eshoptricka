@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<style>
+  .custom-bg-info {
+      background-color: #17A2B8; /* Farba info z Bootstrap */
+  }
+</style>
 <head>
   <title>Login form</title>
   <link rel="stylesheet"
@@ -7,7 +12,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 </head>
-<body class="container">
+<body class= "container custom-bg-info">
 
 <div th:if="${param.error}"> <!--ked je th je to thymeleaf-->
   Invalid username and password.
@@ -29,10 +34,13 @@
 <form th:action="@{/login}" method="post">
   <div><label> User Name : <input type="text" name="username" class="form-control col-12"/> </label></div>
   <div><label> Password: <input type="password" name="password" class="form-control col-12"/> </label></div>
-  <div><input type="submit" value="Sign In" class="btn btn-info col-2" /></div>
+  <div><input type="submit" value="Sign In" class="btn btn-dark col-2" /></div>
+
 </form>
 <td><br></td>
 <td><br></td>
-<a href="/" alt="Odkaz na hlavnú stránku">Späť na hlavnú stránku</a>
+<div class="text-center">
+  <a href="/" alt="Odkaz na hlavnú stránku" class="btn btn-danger">Späť na hlavnú stránku</a>
+</div>
 </body>
 </html>

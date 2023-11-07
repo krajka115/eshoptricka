@@ -7,19 +7,39 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous"> <!--tento link upravuje vzhlad-->
+
+    <style>
+
+        .custom-text {
+            color: gray; /*  farba */
+            font-family: 'Vaša_obľúbená_písma', sans-serif; /* Nastavenie fontu */
+             text-decoration: underline; /* Podčiarknutie */
+      font-weight: bold; /* Tučné */
+      font-style: italic; /* Šikmý */
+      }
+    </style> <!--toto upraví písmo nadpisu title-->
 </head>
-<body>
-<h1>Registruj nového používateľa</h1>
+<body class="bg-info">
+<div class="container">
+<div class="text-center">
+<h1 class="custom-text">Registruj nového používateľa</h1></div>
+<div class="text-left-center">
 <form method="POST" th:action="@{/uloz-pouzivatela}" th:object="${pouzivatelObjektThymeleaf}"> <!--aby nepodčiarkovalo th červeným tak upravíme druhý riadok. pozivatelObjektThymeleaf je to isté ako v Controlleri pri pridaj objednávku-->
  <!--<label>origi sa dáva text do label-->
-    Meno <input th:field="*{meno}" type="text" /><br /> <!--br znamená že nový atribut bude v novom riadku-->
-    Priezvisko <input th:field="*{priezvisko}" type="text" /><br />
-    Používateľké meno <input th:field="*{username}" type="text" /><br />
-    Heslo <input th:field="*{heslo}" type="password" /><br />
-    <button type="submit">Ulož registráciu</button>
-</form>
+    Meno <input th:field="*{meno}" type="text" /><br /> <br /><!--br znamená že nový atribut bude v novom riadku-->
+    Priezvisko <input th:field="*{priezvisko}" type="text" /><br /><br />
+    Používateľské meno <input th:field="*{username}" type="text" /><br /><br />
+    Heslo <input th:field="*{heslo}" type="password" /><br /><br />
+
+    <div style="display: flex; justify-content: space-between; align-items: center;"> <!-- Tlačidlá vedľa seba -->
+    <button type="submit" class="btn btn-secondary ">Ulož registráciu</button>
+
+    <br />
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" class="btn btn-secondary " value="Sign Out"/>
 </form>
+</div></form>
+</div>
+</div>
 </body>
 </html>

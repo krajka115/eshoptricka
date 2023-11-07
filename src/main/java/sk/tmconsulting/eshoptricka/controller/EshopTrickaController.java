@@ -16,7 +16,7 @@ import sk.tmconsulting.eshoptricka.model.Pouzivatel;
 import sk.tmconsulting.eshoptricka.service.ObjednavkaService;
 import sk.tmconsulting.eshoptricka.service.PouzivatelService;
 
-@Controller // urobí automatický import hore vyššie
+@Controller // urobí automatický import hore vyššie //používame thymeleaf tak používame @Controller
 public class EshopTrickaController {
     //dependency injection
     @Autowired// spraví na pozadí objekt
@@ -69,11 +69,23 @@ public class EshopTrickaController {
         model.addAttribute("objednavkaObjektPodlaIdThymeleaf", objednavkaObjektPodlaId);
         return "uprav-objednavku";
     }
+    @GetMapping("/uprav-pouzivatela/{id}")
+    public String upravPouzivatela(@PathVariable(value="id")long id, Model model) {
+        Pouzivatel pouzivatelObjektPodlaId = pouzivatelServiceObjekt.ziskajPouzivatelaPodlaId(id);
+        model.addAttribute("pouzivatelObjektPodlaIdThymeleaf", pouzivatelObjektPodlaId);
+        return "uprav-pouzivatela";
+    }
     @PostMapping("uloz-upravenu-objednavku")//lomka môže aj nemusí byť v názve ako v tých predošlých
     public String ulozUpravenuObjednavku(@ModelAttribute("objednavkaObjektThymeleaf")Objednavka objednavkaObjekt){
         //objednávkaObjekt musí byť uložena, vytvoríme si service a objednavkaService
         objednavkaServiceObjekt.ulozObjednavku(objednavkaObjekt);
         return "uloz-upravenu-objednavku";
+    }
+    @PostMapping("uloz-upraveneho-pouzivatela")//lomka môže aj nemusí byť v názve ako v tých predošlých
+    public String ulozUpravenehoPouzivatela(@ModelAttribute("pouzivatelObjektThymeleaf")Pouzivatel pouzivatelObjekt) {
+        //objednávkaObjekt musí byť uložena, vytvoríme si service a objednavkaService
+        pouzivatelServiceObjekt.ulozPouzivatela(pouzivatelObjekt);
+        return "uloz-upraveneho-pouzivatela";
     }
 
     //controller musí reagovať na id plus adresu html
@@ -81,6 +93,11 @@ public class EshopTrickaController {
     public String odstranObjednavku(@PathVariable(value = "id")long id) {
         objednavkaServiceObjekt.odstranObjednavku(id);
         return "objednavka-odstranena";
+    }
+    @GetMapping("odstran-pouzivatela/{id}")
+    public String odstranPouzivatela(@PathVariable(value = "id")long id) {
+        pouzivatelServiceObjekt.odstranPouzivatela(id);
+        return "pouzivatel-odstraneny";
     }
 
     @GetMapping("/login") // uri adresa, ktoru vidim v internetovom prehliadaci, tu nam vygeneroval webSecurityCongfig v metode configure a my musíme na to nejakým spôsobom reagovať...

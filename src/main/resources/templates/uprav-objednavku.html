@@ -7,9 +7,22 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous"> <!--tento link upravuje vzhlad-->
+    <style>
+
+        .custom-text {
+            color: gray; /*  farba */
+            font-family: 'Vaša_obľúbená_písma', sans-serif; /* Nastavenie fontu */
+             text-decoration: underline; /* Podčiarknutie */
+      font-weight: bold; /* Tučné */
+      font-style: italic; /* Šikmý */
+      }
+    </style> <!--toto upraví písmo nadpisu title-->
 </head>
-<body>
-<h1>Uprav objednávku</h1>
+<body class="bg-info">
+<div class="container">
+    <div class="text-center">
+        <h1 class="custom-text">Uprav objednávku</h1></div>
+        <div class="text-left-center">
 <form method="POST" th:action="@{/uloz-upravenu-objednavku}" th:object="${objednavkaObjektPodlaIdThymeleaf}"> <!--aby nepodčiarkovalo th červeným tak upravíme druhý riadok. objednavkaObjektThymeleaf je to isté ako v Controlleri pri pridaj objednávku-->
  <!--<label>origi sa dáva text do label-->
     <input th:field="*{id}" type="hidden" />  <!--toto je navyše riadok oproti pridaj-novu-obj-->
@@ -28,6 +41,7 @@
         <option value="Žltá">Žltá</option>
         <option value="Oranžová">Oranžová</option>
     </select>
+    <br />
     Značka <input th:field="*{znacka}" type="text" /><br />
     Veľkosť
     <select th:field="*{velkost}">
@@ -41,7 +55,17 @@
     Počet <input th:field="*{pocet}" type="number" /><br />
     Dátum objednávky <input th:field="*{datumObjednavky}" type="date" /><br />
     Meno zákazníka <input th:field="*{menoZakaznika}" type="text" /><br />
-  <button type="submit">Ulož objednávku</button>
+    <br />
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+  <button type="submit " class="btn btn-secondary ">Ulož objednávku</button>
+    </div>
 </form>
+<td><br></td>
+        <div class="text-center">
+        <a href="/" alt="Odkaz na hlavnú stránku" class="btn btn-danger">Späť na hlavnú stránku</a>
+    </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

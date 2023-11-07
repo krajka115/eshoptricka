@@ -24,5 +24,11 @@ public class PouzivatelService {
     public List<Pouzivatel> ziskajVsetkychPouzivatelov(){
         return pouzivatelRepositoryObjekt.findAll();
     }
+    public Pouzivatel ziskajPouzivatelaPodlaId(Long id){
+        return pouzivatelRepositoryObjekt.findById(id).get();
+    }
 
+    public void odstranPouzivatela(long id){
+        pouzivatelRepositoryObjekt.deleteById(id);
+    }
 }

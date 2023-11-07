@@ -79,4 +79,5 @@ public class Pouzivatel {
         this.priezvisko = priezvisko;
     }
 
+
 }

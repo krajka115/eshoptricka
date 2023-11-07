@@ -40,10 +40,13 @@
         </tr>
     </tbody>
 </table>
+<br />
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" class="btn btn-secondary " value="Sign Out"/>
 </form>
 <td><br></td>
-<a href="/" alt="Odkaz na hlavnú stránku">Späť na hlavnú stránku</a>
+<div class="text-center">
+    <a href="/" alt="Odkaz na hlavnú stránku" class="btn btn-danger">Späť na hlavnú stránku</a>
+</div>
 </body>
 </html>

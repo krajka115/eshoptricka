@@ -9,12 +9,33 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous"> <!--tento link upravuje vzhlad-->
     <!--<link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />-->
+
+ <style>
+
+      .custom-text {
+          color: gray; /*  farba */
+          font-family: 'Vaša_obľúbená_písma', sans-serif; /* Nastavenie fontu */
+           text-decoration: underline; /* Podčiarknutie */
+    font-weight: bold; /* Tučné */
+    font-style: italic; /* Šikmý */
+    }
+    </style> <!--toto upraví písmo nadpisu h1-->
 </head>
-<body>
-    <h1>Vitajte v E-shope s tričkami v 1.0 | Objednávkový systém</h1>
-    <a href="/registruj-pouzivatela">Registruj používateľa</a><br>
-    <a href="/pridaj-objednavku">Pridaj objednávku</a><br>
-    <a href="/zobraz-vsetky-objednavky">Zobraz všetky objednávky</a><br>
-    <a href="/zobraz-vsetkych-pouzivatelov">Zobraz všetkých používateľov</a>
+
+
+<body class="bg-info">
+<div class="text-center">
+<h1 class="custom-text">Vitajte v E-shope s tričkami v 1.0 | Objednávkový systém</h1>
+</div>
+        <br>
+        <br>
+<div class="text-center">
+    <a href="/registruj-pouzivatela" type="button" class="btn btn-secondary ">Registruj používateľa</a><br><br> <!--pridanie triedy text-center vycentruje tlačidlo v riadku-->
+    <a href="/pridaj-objednavku" type="button" class="btn btn-secondary ">Pridaj objednávku</a><br><br>
+    <a href="/zobraz-vsetky-objednavky" type="button" class="btn btn-secondary ">Zobraz všetky objednávky</a><br><br>
+    <a href="/zobraz-vsetkych-pouzivatelov" type="button" class="btn btn-secondary ">Zobraz všetkých používateľov</a>
+</div>
+
+
 </body>
 </html>
